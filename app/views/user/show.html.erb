@@ -1,0 +1,13 @@
+<% @title= "#{@user.username}'s Liked Wallpapers" %>
+<h2 id="index_header">Wallpapers Liked by <%=@user.username%></h2>
+<% @wallpapers.each do |wallpaper|%>
+  <%= render 'wallpapers/gallery',wallpaper: wallpaper %>
+<%end%>
+<div class="apple_pagination">
+  <div class="page_info">
+    <%= page_entries_info @wallpapers %>
+  </div>
+  <%= will_paginate @wallpapers, :container => false %>
+</div>
+<%=link_to "#{@user.username}'s Submitted Wallpapers","/user/#{@user.username}/submitted",class:"link"%>
+<%= link_to "edit your account",edit_user_registration_path,class:"link" if current_user == @user %>

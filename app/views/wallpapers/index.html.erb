@@ -1,0 +1,15 @@
+<% @title= "#{@header} Ultrawide Wallpapers dedicated for 21:9 3440x1440,2560x1080 Displays!" %>
+<meta name="description" content="<%=@header%> UltraWide 3440x1440,2560x1080 21:9 Wallpapers!">
+<h1 id="index_header"><%=@header%> Ultrawide Wallpapers</h1>
+
+
+<% @wallpapers.each do |wallpaper| %>
+  <%= render 'gallery',wallpaper: wallpaper %>
+<% end %>
+<br>
+<div class="apple_pagination">
+  <div class="page_info">
+    <%= page_entries_info @wallpapers %>
+  </div>
+  <%= will_paginate @wallpapers, :container => false %>
+</div>

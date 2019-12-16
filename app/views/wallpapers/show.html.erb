@@ -1,0 +1,123 @@
+<meta name="description" content="A Site to Find UltraWide 3440x1440,2560x1080 21:9 Wallpapers. Also Sort by Color or by Diffrent Tags! All images are HD and 21:9 aspect ratio.">
+<h2 id="wallpaper_title_show"><%= @wallpaper.title %> Ultrawide Wallpaper</h2>
+<h4 id="wallpaper_h4">submitted by <%=link_to @wallpaper.user.username,"/user/#{@wallpaper.user.username}"%></h4>
+<%= image_tag @wallpaper.image.url,id:"show_wallpaper",alt:"#{@wallpaper.title} Ultrawide Wallpaper"%>
+<div id="show_tags">
+  <strong>&nbsp;&nbsp;Tags:</strong><br>
+  <ul>
+  <% @wallpaper.tag_list.each do |tag|%>
+    <li><%=link_to tag,wallpapers_path(:tag=> tag )%></li>
+  <%end%>
+  </ul>
+</div>
+<div id="show_color">
+  <strong>Color:</strong>
+  <%= if @wallpaper.color == "" then "???" else link_to @wallpaper.color, wallpapers_path(:color=>@wallpaper.color),id:"color_link" end %>
+</div>
+<div id="resolution">
+  Resolution:<br><%=@size[0]%>x<%=@size[1]%>
+</div>
+<% if user_signed_in?%>
+  <div id="rating_div">
+    <%= link_to "javascript:void(0)", class: "like #{'liked' if current_user.voted_up_on? @wallpaper}",id:@wallpaper.id do %>
+       <i class="glyphicon glyphicon-star"></i>
+    <% end %>
+    <p id="p_like"><%=if current_user.voted_up_on? @wallpaper then "Like!"else "Like?" end%></p>
+    <br>Amount of Likes:
+    <div class="rating">
+      <%= @wallpaper.get_upvotes.size%>
+    </div>
+  </div>
+<%else%>
+  <div id="rating_div">
+    Amount of Likes:
+    <div class="rating">
+      <%= @wallpaper.get_upvotes.size%>
+    </div>
+  </div>
+<%end%>
+<% if current_user == @wallpaper.user%>
+  <%= link_to 'Delete', @wallpaper, method: :delete, data: { confirm: 'Are you sure?' },class:"link" %>
+  <%= link_to 'Edit Your Wallpaper',edit_wallpaper_path(@wallpaper),class:"link" %>
+<%else%>
+  <h4 id="tags_h4">add more tags!</h4>
+  <%= form_tag wallpaper_add_tags_path, method: :get,class:"add_tags_form" do %>
+      <%= hidden_field_tag 'id', @wallpaper.id%>
+      <%=text_field_tag 'tags',"",placeholder:"ex.'nature,shepard puppy'"%><br>
+      <span class="help-block">seperate tags with a comma (ex.'nature,shepard puppy,doggie')</span>
+      <%=submit_tag "add tags"%>
+  <%end%>
+<%end%>
+
+
+
+
+<script>
+$('.like').click(function(e) {
+  console.log("CLICKED");
+  var wallpaper= $(this).attr("id")
+  $(this).toggleClass( "liked" );
+  $.ajax({
+    type: "POST",
+    url: "/wallpaper/vote",
+    dataType:"json",
+    data: {id:wallpaper },
+    success:function(data) {
+      console.log(data);
+      $(".rating").text(data)
+      var text= $("#p_like").text()
+      if(text=="Like?"){
+        $("#p_like").text("Like!")
+      }else{
+        $("#p_like").text("Like?")
+      }
+      return false;
+    },
+    error:function(data) {
+      console.log("error");
+      return false;
+    }
+  });
+});
+$('#show_wallpaper').magnificPopup({
+  items: {
+    src: gon.src
+  },
+  type: 'image',
+  closeOnContentClick: true,
+  mainClass: 'mfp-with-zoom', // this class is for CSS animation below
+
+  zoom: {
+    enabled: true, // By default it's false, so don't forget to enable it
+
+    duration: 300, // duration of the effect, in milliseconds
+    easing: 'ease-in-out', // CSS transition easing function
+
+    // The "opener" function should return the element from which popup will be zoomed in
+    // and to which popup will be scaled down
+    // By defailt it looks for an image tag:
+    opener: function(openerElement) {
+      // openerElement is the element on which popup was initialized, in this case its <a> tag
+      // you don't need to add "opener" option if this code matches your needs, it's defailt one.
+      return $('#show_wallpaper');
+    }
+  }
+});
+
+$(document).ready(function () {
+
+  $.validate({
+    lang: 'en',
+    modules : 'security,html5',
+    onSuccess : function($form) {
+    },
+    onError : function($form) {
+      console.log("error");
+      sweetAlert("Opps!", "Something Was Wrong", "warning");
+      return false; // IF FALSE Will stop the submission of the form
+    }
+
+  });
+
+});
+</script>

@@ -1,0 +1,589 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+    font-family: 'Audiowide', cursive;
+
+    font-family: 'Oswald', sans-serif;
+
+    font-family: 'Exo 2', sans-serif;
+
+    GREY: #222930
+    BLUE: #4EB1BA
+    WHITE: #E9E9E9
+ *
+ *= require_tree .
+ *= require rails_bootstrap_forms
+ *= require magnific-popup
+ *= require dropzone/dropzone
+ *= require sweetalert
+ *= require owl.carousel
+ *= require owl.theme
+ *= require_self
+ */
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+$blue: #4EB1BA;
+$darkgrey: #181717;
+$grey: #E9E9E9;
+$lime: #C7F465;
+::-moz-selection { /* Code for Firefox */
+    color: $darkgrey;
+    background: $lime;
+}
+
+::selection {
+    color: $darkgrey;
+    background: $lime;
+}
+ a{
+   text-decoration: none !important;
+   :hover{
+     text-decoration: none !important;
+   }
+ }
+
+ /* unvisited link */
+ a:link {
+    color: inherit;
+ }
+ /* visited link */
+ a:visited {
+    color: inherit;
+ }
+ /* mouse over link */
+ a:hover {
+    color: inherit;
+ }
+ /* selected link */
+ a:active {
+    color: inherit;
+ }
+ body{
+   background-color: $darkgrey;
+   color: $grey;
+   width: 100%;
+ }
+ /********************************************* HEADER**************************************************/
+
+#header_tags_link{
+  font-size: 14px;
+  font-weight: bold;
+}
+.navbar{
+  background-color: $darkgrey;
+  border-bottom: 12px solid $blue;
+  padding: 7px;
+  form{
+    display: inline-block;
+  }
+  li a{
+    color: $grey !important;
+    font-family: 'Exo 2', sans-serif;
+    font-size: 17px;
+    font-weight: bold;
+  }
+  li:hover{
+    background-color: $lime;
+    a{
+      color: $darkgrey !important;
+    }
+  }
+  .open{
+    .dropdown-toggle{
+      background-color: $lime !important;
+      color: $darkgrey !important;
+    }
+    a{
+      color: $darkgrey !important;
+    }
+    li :hover{
+      background-color: $blue !important;
+      color:$grey !important;
+    }
+  }
+}
+#header_title{
+  color: $grey !important;
+  font-size: 35px;
+  font-family: 'Audiowide', cursive;
+}
+#header_title:hover{
+    color: $lime !important;
+  }
+.inline{
+  display: inline-block;
+}
+
+@media only screen and (max-width: 1500px) {
+    .navbar-right {
+      display: block;
+      float: left !important;
+    }
+}
+@media only screen and (max-width: 500px) {
+    #header_title {
+      font-size: 25px;
+    }
+}
+@media only screen and (max-width: 400px) {
+    #header_title {
+      font-size: 20px;
+    }
+}
+/********************************************* HEADER**************************************************/
+
+
+
+
+/********************************************* SHOW**************************************************/
+
+.like{
+  font-size: 40px;
+  color: $grey !important;
+  border: 1px solid black;
+  border-radius: 10%;
+  padding: 2px;
+  :hover{
+    color:$lime !important;
+  }
+}
+.liked{
+    color: $lime !important;
+    :hover{
+      color:$lime  !important;
+    }
+}
+
+#show_wallpaper{
+  width: 95%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid black;
+}
+#wallpaper_title_show{
+  font-size: 50px;
+  font-family: 'Exo 2', sans-serif;
+  font-weight: bold;
+  text-align: center;
+}
+#wallpaper_h4{
+  font-size: 17px;
+  font-family: 'Exo 2', sans-serif;
+  text-align: center;
+}
+#show_tags{
+  display: block;
+  width: 170px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 24px;
+  font-family: 'Exo 2', sans-serif;
+  margin-top: 10px;
+  ul{
+    text-decoration: underline;
+    :hover{
+      color: $lime;
+    }
+  }
+}
+#show_color{
+  text-align: center;
+  font-size: 24px;
+  font-family: 'Exo 2', sans-serif;
+  margin-top: 10px;
+}
+#rating_div{
+  text-align: center;
+  font-size: 24px;
+  font-family: 'Exo 2', sans-serif;
+  margin-top: 10px;
+}
+#resolution{
+  text-align: center;
+  font-size: 24px;
+  font-family: 'Exo 2', sans-serif;
+  margin-top: 15px;
+  margin-bottom: 40px;
+}
+
+.add_tags_form{
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  color: black;
+  input{
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #555555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    margin-bottom: 10px;
+  }
+}
+
+#tags_h4{
+  text-align: center;
+  font-size: 24px;
+  font-family: 'Exo 2', sans-serif;
+  margin-bottom: 25px;
+}
+/********************************************* SHOW**************************************************/
+
+
+/********************************************* GALLERY**************************************************/
+#index_header{
+  text-align: center;
+  font-family: 'Exo 2', sans-serif;
+  font-size: 34px;
+  margin-top: -5px;
+}
+.gallery_wallpaper{
+  width: 33.35%;
+  margin-left: -.2%;
+}
+@media only screen and (max-width: 1445px) {
+    .gallery_wallpaper {
+        width: 33%;
+    }
+}
+@media only screen and (max-width: 900px) {
+    .gallery_wallpaper {
+        width: 49%;
+    }
+}
+@media only screen and (max-width: 750px) {
+    .gallery_wallpaper {
+        width: 100%;
+    }
+}
+.apple_pagination {
+  background: $blue;
+  text-align: center;
+  padding: 1em;
+  cursor: default; }
+  .apple_pagination a, .apple_pagination span {
+    padding: 0.2em 0.3em; }
+  .apple_pagination .disabled {
+    color: #327a81; }
+  .apple_pagination .current {
+    font-style: normal;
+    font-weight: bold;
+    background-color: $lime;
+    color:$darkgrey;
+    display: inline-block;
+    width: 1.4em;
+    height: 1.4em;
+    line-height: 1.5;
+    -moz-border-radius: 1em;
+    -webkit-border-radius: 1em;
+    border-radius: 1em;
+    text-shadow: rgba(255, 255, 255, 0.8) 1px 1px 1px; }
+  .apple_pagination a {
+    text-decoration: none;
+    color: black; }
+    .apple_pagination a:hover, .apple_pagination a:focus {
+      text-decoration: underline; }
+/********************************************* GALLERY**************************************************/
+
+
+/********************************************* USER PAGES**************************************************/
+
+.link{
+  font-size: 30px;
+  font-family: 'Exo 2', sans-serif;
+  text-align: center;
+  display: block;
+  margin: 20px auto 0 auto;
+}
+.link:hover{
+    text-decoration: underline !important;
+  }
+
+
+/********************************************* USER PAGES**************************************************/
+/*********************************************  POPUP IMAGE **************************************************/
+
+.mfp-img {
+line-height: 0;
+width: 100%;
+max-width: 100% !important;
+max-height: 100% !important;
+}
+/*********************************************  POPUP IMAGE **************************************************/
+
+
+/*********************************************  DROPZONE/ NEW WALLPAPER **************************************************/
+.form-div{
+  .easy-autocomplete-container{
+    color: black !important;
+  }
+}
+
+#dZUpload{
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 275px;
+  color: #646C7F;
+  font-size: 19px;
+  font-family: 'Exo 2', sans-serif;
+  border-radius: 5px;
+  border: 5px solid $blue;
+}
+
+.new-wallpaper{
+  width: 100%;
+  margin-top: 25px;
+}
+
+.jquery-form-suggestions{
+  color: black;
+}
+
+/*********************************************  DROPZONE/ NEW WALLPAPER **************************************************/
+
+
+
+/********************************************* TAGS LISTING**************************************************/
+.tag_listing{
+  float: left;
+  width: 33%;
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-decoration: underline;
+}
+.tags_pics{
+  width: 100%;
+}
+
+#tags_containter{
+  overflow: hidden;
+}
+@media only screen and (max-width: 900px) {
+    .tag_listing {
+        width: 49%;
+    }
+}
+@media only screen and (max-width: 750px) {
+    .tag_listing {
+        width: 100%;
+    }
+}
+/********************************************* TAGS LISTING**************************************************/
+
+
+
+/********************************************* HOME **************************************************/
+
+
+#home_1{
+  background-image: url("background.png");
+  color: black;
+  margin-top: -20px;
+  padding: 50px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#home_h1{
+  text-align: center;
+  font-size: 45px;
+  font-weight: bold;
+  font-family: 'Exo 2', sans-serif;
+  letter-spacing: 2px;
+  line-height: 140%;
+  margin-bottom: 20px;
+  margin-top: 0;
+  -webkit-text-stroke: .8px #999;
+}
+
+.home_link{
+  display: block;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Exo 2', sans-serif;
+  font-size: 30px;
+  text-decoration: underline !important;
+  -webkit-text-stroke: .3px #999;
+}
+.home_link_2{
+  color: white !important;
+  display: block;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Exo 2', sans-serif;
+  font-size: 35px;
+  text-decoration: underline !important;
+  -webkit-text-stroke: .3px black;
+  margin-top: 30px;
+}
+.owl-carousel{
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.owl_text{
+  position: absolute;
+  z-index: 1;
+  color: $grey !important;
+  font-size: 60px;
+  font-family: 'Audiowide', cursive;
+  left: 0;
+  top: 30%;
+  width: 100%;
+  text-align: center;
+  -webkit-text-stroke: 1.0px black;
+}
+
+.parallax {
+  padding: 80px 0px 0 0px;
+    /* The image used */
+    background-image: url("background2.jpg");
+
+    /* Set a specific height */
+    min-height: 800px;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#long{
+  height: 400px;
+}
+.half{
+  text-align: center;
+  width: 49%;
+  display: inline-block;
+  padding: 80px 30px 0 30px;
+    /* The image used */
+    background-image: url("background2.jpg");
+
+    /* Set a specific height */
+    height: 400px;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    a{
+      color: $grey !important;
+      font-size: 60px;
+      font-family: 'Audiowide', cursive;
+      left: 0;
+      top: 30%;
+      width: 100%;
+      text-align: center;
+      -webkit-text-stroke: 1.0px black;
+      display: table-cell; height: 300px; vertical-align: middle;width:30%;
+    }
+}
+@media only screen and (max-width: 700px) {
+    .half {
+        width: 100%;
+    }
+}
+@media only screen and (max-width: 500px) {
+    .half a{
+        font-size: 40px;
+    }
+}
+
+.one{
+  background-image: url("nature.jpg");
+}
+.two{
+  background-image: url("artistic.jpg");
+}
+.three{
+  background-image: url("water.jpg");
+}
+.four{
+  background-image: url("animal.jpg");
+}
+.five{
+  background-image: url("cars.jpg");
+}
+.six{
+  background-image: url("architecture.jpg");
+}
+/********************************************* HOME **************************************************/
+
+/*font-family: 'Audiowide', cursive;
+
+/*font-family: 'Oswald', sans-serif;
+
+/*font-family: 'Exo 2', sans-serif;
+/********************************************* GUIDE **************************************************/
+
+.guide{
+  h1{
+    text-align: center;
+    margin-bottom: 50px;
+    font-family: 'Audiowide', cursive;
+    text-decoration: underline;
+    -moz-text-decoration-color: $lime; /* Code for Firefox */
+    text-decoration-color: $lime;
+  }
+  p{
+    font-size: 21px;
+    font-family: 'Exo 2', sans-serif;
+    letter-spacing: 1.5px;
+    line-height: 150%;
+    text-indent: 50px;
+  }
+  li{
+    font-size: 21px;
+    font-family: 'Exo 2', sans-serif;
+    letter-spacing: 1.5px;
+    line-height: 150%;
+  }
+  img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 75%;
+    margin-top: 35px;
+  }
+  a{
+    color: $lime !important;
+    text-decoration: underline;
+  }
+  figcaption{
+    text-align: center;
+    margin-bottom: 35px;
+  }
+  iframe{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+  }
+}
+
+/********************************************* GUIDE **************************************************/

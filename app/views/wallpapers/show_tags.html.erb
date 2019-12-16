@@ -1,0 +1,17 @@
+<% @title= "Tags for Ultrawide Wallpapers" %>
+<meta name="description" content="All The Tags to Find The Right UltraWide 3440x1440,2560x1080 21:9 Wallpapers!">
+<div id="tags_containter">
+<%@tags.each do |tag|%>
+  <div class="tag_listing">
+    <%@wallpaper=Wallpaper.tagged_with(tag.name).limit(1)%>
+    <%= image_tag @wallpaper[0].image.url(:thumb),class:"tags_pics"%>
+    <br><%=link_to tag.name,wallpapers_path(:tag=> tag.name )%> (<%=(tag.taggings_count)%>)
+  </div>
+<%end%>
+</div>
+<div class="apple_pagination">
+  <div class="page_info">
+    <%= page_entries_info @tags %>
+  </div>
+  <%= will_paginate @tags, :container => false %>
+</div>
