@@ -86,7 +86,7 @@
 
     </div>
   </nav>
-  <div id='donation_div'>GIVE ME MONEY</div>
+  
 <% flash.each do |key, value| %>
   <div class="<%= flash_class(key) %>">
     <%= value %>
@@ -97,12 +97,4 @@
 <%= render partial: "layouts/ganalytics_pageview" %>
 
 </body>
-
-<script type="text/javascript">
-  $(".note a").click(function(e) {
-    e.preventDefault();
-    $(this).parent().remove();
-  });
-
-</script>
 </html>
